@@ -15,7 +15,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Using blit ot draw tiles")
 
 #load game font
-custom_font = pygame.font.Font("assets/fonts/Gretoon.ttf" , 128)
+custom_font = pygame.font.Font("assets/fonts/Gretoon.ttf" , 70)
 
 def draw_background(surf):
     #Load our tiles from the assets folder
@@ -46,13 +46,31 @@ def draw_background(surf):
     surf.blit(text, (screen_width/2 - text.get_width()/2, screen_height/2 - text.get_height()/2))
 def draw_fishes(surf):
     #Load our fish tiles onto our surface
+    orange_fish =pygame.image.load('assets/sprites/orange_fish.png')
+    #set color key
+    orange_fish.set_colorkey((0,0,0,))
+    #load green fish
+    green_fish = pygame.image.load('assets/sprites/green_fish.png')
+    #flip fish
+    green_fish = pygame.transform.flip(green_fish, True, False)
+    # set color key for green fish
+    green_fish.set_colorkey((0,0,0))
+
+    #distribute our green fish on the screen randomly
+    for _ in range(5):
+        x = random.randint(0, screen_width-tile_size)
+        y = random.randint(tile_size, screen_height-tile_size)
+        i = random.randint(0, screen_width - tile_size)
+        j = random.randint(tile_size, screen_height - tile_size)
+        surf.blit(orange_fish, (x,y))
+        surf.blit(green_fish,(i,j))
 
 
 # Main loop
 running = True
 background = screen.copy()
 draw_background(background)
-
+draw_fishes(background)
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
