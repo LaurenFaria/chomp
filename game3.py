@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+from fish import Fish, fishes #importing a sprite class and sprite group
 
 #Initialize oygame
 pygame.init()
@@ -43,34 +44,18 @@ def draw_background(surf):
     #draw the text
     text = custom_font.render("Chomp", True, (255,29,0))
     #text = custom_font.render('Chomp', True, (255,29,0))
-    surf.blit(text, (screen_width/2 - text.get_width()/2, screen_height/2 - 250))
-def draw_fishes(surf):
-    #Load our fish tiles onto our surface
-    orange_fish =pygame.image.load('assets/sprites/orange_fish.png')
-    #set color key
-    orange_fish.set_colorkey((0,0,0,))
-    #load green fish
-    green_fish = pygame.image.load('assets/sprites/green_fish.png')
-    #flip fish
-    green_fish = pygame.transform.flip(green_fish, True, False)
-    # set color key for green fish
-    green_fish.set_colorkey((0,0,0))
-
-    #distribute our green fish on the screen randomly
-    for _ in range(5):
-        x = random.randint(0, screen_width-tile_size)
-        y = random.randint(tile_size, screen_height-tile_size)
-        i = random.randint(0, screen_width - tile_size)
-        j = random.randint(tile_size, screen_height - tile_size)
-        surf.blit(orange_fish, (x,y))
-        surf.blit(green_fish,(i,j))
-
+    surf.blit(text, (screen_width/2 - text.get_width()/2, screen_height/2 - text.get_height()/2))
 
 # Main loop
 running = True
 background = screen.copy()
 draw_background(background)
-draw_fishes(background)
+
+#draw fish on screen
+for _ in range(5):
+    fishes.add(Fish(random.randint(0, screen_width-tile_size), random.randint(0,tile_size, screen_height - tile_size)))
+
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -81,5 +66,6 @@ while running:
 
     # update the display
     pygame.display.flip()
+
 
 pygame.quit()
