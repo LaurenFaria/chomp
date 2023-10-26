@@ -26,6 +26,10 @@ while running:
                 print ('you pressed the key up key')
             if event.key == pygame.K_DOWN:
                 print ('you pressed te key down key')
+            if event.key == pygame.K_LEFT:
+                print('you pressed the left arrow')
+            if event.key == pygame.K_RIGHT:
+                print('you pressed the right key')
 
 
     # draw the background

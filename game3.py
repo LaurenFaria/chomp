@@ -16,7 +16,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Using blit ot draw tiles")
 
 #load game font
-custom_font = pygame.font.Font("assets/fonts/Gretoon.ttf" , 70)
+#custom_font = pygame.font.Font("assets/fonts/Gretoon.ttf" , 70)
 
 def draw_background(surf):
     #Load our tiles from the assets folder
@@ -42,9 +42,9 @@ def draw_background(surf):
         surf.blit(seagrass, (x,screen_height-tile_size*2))
 
     #draw the text
-    text = custom_font.render("Chomp", True, (255,29,0))
+    #text = custom_font.render("Chomp", True, (255,29,0))
     #text = custom_font.render('Chomp', True, (255,29,0))
-    surf.blit(text, (screen_width/2 - text.get_width()/2, screen_height/2 - text.get_height()/2))
+    #surf.blit(text, (screen_width/2 - text.get_width()/2, screen_height/2 - text.get_height()/2))
 
 # Main loop
 running = True

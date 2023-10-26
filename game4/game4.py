@@ -42,14 +42,25 @@ def draw_background(surf):
         x = random.randint(0, screen_width)
         surf.blit(seagrass, (x, screen_height - tile_size * 2))
 
+    # draw the text
+    text = custom_font.render("Chomp", True, (255, 29, 0))
+    # text = custom_font.render('Chomp', True, (255,29,0))
+    surf.blit(text, (screen_width / 2 - text.get_width() / 2, screen_height / 2 - text.get_height() / 2))
+
+
 # Main loop
 running = True
 background = screen.copy()
 draw_background(background)
 
+
+#load game font
+custom_font = pygame.font.Font("assets/fonts/Gretoon.ttf" , 70)
+
 #draw fish on screen
 for _ in range(5):
     fishes.add(Fish(random.randint(screen_width, screen_width*2), random.randint(tile_size, screen_height - tile_size)))
+
 
 while running:
     for event in pygame.event.get():
